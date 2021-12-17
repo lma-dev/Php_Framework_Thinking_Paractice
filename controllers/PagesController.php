@@ -1,5 +1,9 @@
 <?php
 
+namespace controllers;
+
+use core\App;
+
 class PagesController
 {
     public function home()
@@ -22,9 +26,9 @@ class PagesController
     public function createUser()
     {
         App::get("database")->insert([
-            'name'=>$_POST['name']
+            'name'=>request('name')
         ], "users");
         
-        header("Location: /");
+        redirect('/');
     }
 }
